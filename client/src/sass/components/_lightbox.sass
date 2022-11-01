@@ -1,0 +1,29 @@
+.lightbox
+    position: absolute
+    z-index: 3
+    bottom: 0
+    left: 0
+    background-color: rgba(255,255,255,1)
+    height: 0
+    width: 100vw
+    transition: all 0.8s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s
+    .lightbox-title
+        font-size: 3rem
+    .lightbox-desc
+        font-size: 2rem
+.lightbox.active
+    height: 30rem
+
+.lightbox-btn
+    z-index: 1
+    position: absolute
+    bottom: 0
+    opacity: 0
+
+.lightbox-btn.show
+    opacity: 1
+
+.sub-text
+    position: absolute
+    bottom: 0
+    font-size: 2rem
