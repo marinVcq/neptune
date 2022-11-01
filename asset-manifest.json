@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/neptune/static/css/main.059530f9.css",
-    "main.js": "/neptune/static/js/main.3c310468.js",
+    "main.js": "/neptune/static/js/main.017427fb.js",
     "static/js/787.c4e7f8f9.chunk.js": "/neptune/static/js/787.c4e7f8f9.chunk.js",
     "static/media/header_desktop.jpg": "/neptune/static/media/header_desktop.8e6bee5a8646f9497301.jpg",
     "static/media/asset2.png": "/neptune/static/media/asset2.6ea44e6239da9b233675.png",
@@ -12,11 +12,11 @@
     "static/media/coverse.TTF": "/neptune/static/media/coverse.637899d6759533f0abc7.TTF",
     "index.html": "/neptune/index.html",
     "main.059530f9.css.map": "/neptune/static/css/main.059530f9.css.map",
-    "main.3c310468.js.map": "/neptune/static/js/main.3c310468.js.map",
+    "main.017427fb.js.map": "/neptune/static/js/main.017427fb.js.map",
     "787.c4e7f8f9.chunk.js.map": "/neptune/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.059530f9.css",
-    "static/js/main.3c310468.js"
+    "static/js/main.017427fb.js"
   ]
 }
