@@ -7,11 +7,11 @@ const NavbarDesktop = () => {
     <nav className='desktop-navbar'>
       <span className='logo'>neptune</span>
       <div className="links">
-          <Link className='link' to="/"><h6 className='desktop-nav-link'>Homepage</h6></Link>
+          <Link className='link' to=""><h6 className='desktop-nav-link'>Homepage</h6></Link>
           <Link className='link' to="/numeros"><h6 className='desktop-nav-link'>Les numéros</h6></Link>
           <Link className='link' to="/articles"><h6 className='desktop-nav-link'>Les articles</h6></Link>
           <Link className='link' to="/contact"><h6 className='desktop-nav-link'>Nous contacter</h6></Link>
-          <Link className='link' to="#"><img src={InstagramDesktop}></img></Link>
+          <Link className='link' to="https://www.instagram.com"><img src={InstagramDesktop}></img></Link>
       </div>
     </nav>
   )
