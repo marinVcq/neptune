@@ -6,6 +6,7 @@ import {
   Outlet,
 } from "react-router-dom";
 
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Write from "./pages/Write";
@@ -44,11 +45,11 @@ const Layout = () => {
 
 const router = createBrowserRouter([
   {
-    path: "",
+    path: "/",
     element: <Layout/>,
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home/>,
       },
       {
@@ -77,7 +78,7 @@ const router = createBrowserRouter([
       },
     ]
   }
-]);
+], {basename: "/neptune"});
 
 function App() {
   return (
