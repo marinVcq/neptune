@@ -1,7 +1,6 @@
 import {useState, useEffect} from "react";
 import {
   createBrowserRouter,
-  createHashRouter,
   RouterProvider,
   Route,
   Outlet,
@@ -44,7 +43,7 @@ const Layout = () => {
   )
 }
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout/>,
