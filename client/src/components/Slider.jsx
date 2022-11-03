@@ -6,60 +6,27 @@ import asset3 from '../assets/images/asset3.jpg'
 import Close from '../assets/icons/close.png'
 import Download from '../assets/icons/download.png'
 
-export const SliderData = [
-  {
-    image:
-      asset1,
-    titre: 'Numéro 1',
-    path: 'http://localhost:3000/public/numeros/asset1.pdf',
-    description:
-    'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam nam earum ratione cupiditate corrupti quo placeat recusandae odio, expedita, obcaecati corporis beatae! Repellat, exercitationem magnam!'
-  },
-  {
-    image:
-      asset2,
-      titre: 'Numéro 2',
-      path: '../../public/numeros/asset1.pdf',
-    description:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum voluptatibus commodi voluptas animi inventore, voluptates debitis ipsum qui blanditiis. Recusandae, dolore.'
-  },
-  {
-    image:
-      asset3,
-      titre: 'Numéro 3',
-      path: '../../public/numeros/asset1.pdf',
-    description:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed id aut laborum quo esse ratione rem blanditiis culpa?'
-  }
-];
-
-const Slider = () => {
-
-    // Function execute on download click
-    const onDownloadClick = (path) =>{
-      fetch(path).then(response =>{
-        response.blob().then(blob => {
-          // Creating new object of PDF file
-          const fileURL = window.URL.createObjectURL(blob);
-          // Setting various property values
-          let alink = document.createElement('a');
-          alink.href = fileURL;
-          alink.download = path;
-          alink.click();
-        })
-      })
-    }
-    function download(url, filename) {
-    fetch(url).then(function(t) {
-        return t.blob().then((b)=>{
-            var a = document.createElement("a");
-            a.href = URL.createObjectURL(b);
-            a.setAttribute("download", filename);
-            a.click();
-        }
-        );
-    });
-    }
+// export const SliderData = [
+//   {
+//     image: 'https://i.ibb.co/hfP9HFd/asset1.jpg',
+//     titre: 'Numéro 1',
+//     description:
+//     'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam nam earum ratione cupiditate corrupti quo placeat recusandae odio, expedita, obcaecati corporis beatae! Repellat, exercitationem magnam!'
+//   },
+//   {
+//     image:'https://i.ibb.co/dDPXWh2/asset2.png',
+//       titre: 'Numéro 2',
+//     description:
+//     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum voluptatibus commodi voluptas animi inventore, voluptates debitis ipsum qui blanditiis. Recusandae, dolore.'
+//   },
+//   {
+//     image:'https://i.ibb.co/4ZwB5Cj/asset3.jpg',
+//       titre: 'Numéro 3',
+//     description:
+//     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed id aut laborum quo esse ratione rem blanditiis culpa?'
+//   }
+// ];
+const Slider = ({SliderData}) => {
 
     const[current, setCurrent] = useState(0);
     const length = SliderData.length;

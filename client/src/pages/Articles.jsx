@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Articles = () => {
+export const Articles = () => {
   const Articles = [
     {
       id: 1,
