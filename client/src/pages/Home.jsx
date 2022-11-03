@@ -1,12 +1,15 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect, Suspense} from "react";
 import { Link } from 'react-router-dom';
+
 import HeaderDesktop from '../assets/images/header_desktop.jpg';
 import HeaderMobile from '../assets/images/header_mobile.jpg';
 import Downward from '../assets/icons/downward.png';
-import Slider from "../components/Slider";
 import StatueImage from "../assets/images/neptune_statue.png";
 import DoubleDown from "../assets/icons/double_down_100.png";
 import DoubleDownSmall from "../assets/icons/double_down.png";
+
+
+const Slider = React.lazy(() => import("../components/Slider.jsx"));
 
 
 const Home = () => {
@@ -42,7 +45,10 @@ useEffect(() => {
           </>
         )}
       </header>
-        <Slider />
+        <Suspense fallback={<div>Loading...</div>}>
+            <Slider />
+        </Suspense>
+
         <div className="showmore">
           <img src={DoubleDownSmall} alt="double arrow"></img>
           <Link className='link' to="/numeros"><h6 className="showMore">Voir tous les numéros</h6></Link>

@@ -100,11 +100,9 @@ const Slider = () => {
         <br/>
         {SliderData.map((slide, index) =>{
           return(
-            <>
-              <div className='slide-desc' key={`slide ${index}`}>
-                {index === current && (<p>{slide.description}</p>)}
-              </div>
-            </>            
+            <div className='slide-desc' key={`slide ${index}`}>
+              {index === current && (<p>{slide.description}</p>)}
+            </div>
           )
 
         })}
