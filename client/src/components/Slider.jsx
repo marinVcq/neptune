@@ -5,6 +5,7 @@ import asset2 from '../assets/images/asset2.png'
 import asset3 from '../assets/images/asset3.jpg'
 import Close from '../assets/icons/close.png'
 import Download from '../assets/icons/download.png'
+import { Link } from 'react-router-dom'
 
 // export const SliderData = [
 //   {
@@ -44,7 +45,6 @@ const Slider = ({SliderData}) => {
 
   return (
     <div className='slider-container'>
-      <h2 className='slider-title'>Nos derniers numeros</h2>
       <section className='slider'>
           <div className='prevArrow' onClick={prevSlide}><img src={Forward} alt='previous arrow'></img></div>
           {SliderData.map((slide, index) => {
@@ -52,10 +52,10 @@ const Slider = ({SliderData}) => {
                 <>
                   <div className={index === current ? 'slide active' : 'slide'} key={index}>
                       {index === current && (
-                          <img src= {slide.image} alt='dernier numéro' className='image' loading="lazy"></img>
+                          <img src= {slide.img} alt='dernier numéro' className='image' loading="lazy"></img>
                       )}
                   </div>
-                  {index === current && (<h1 className='slide-title' key={`${slide.titre} ${index}`}>{slide.titre}</h1>)}
+                  {index === current && (<h1 className='slide-title' key={`${slide.title} ${index}`}>{slide.title}</h1>)}
                 </>
               )
           })}
@@ -68,26 +68,31 @@ const Slider = ({SliderData}) => {
         {SliderData.map((slide, index) =>{
           return(
             <div className='slide-desc' key={`slide ${index}`}>
-              {index === current && (<p>{slide.description}</p>)}
+              {index === current && (<p>{slide.desc}</p>)}
             </div>
           )
 
         })}
-        <div className='download'>
-          <h2>Télécharger au format PDF</h2>
           {SliderData.map((slide, index) =>{
             return(
               <>
                 {index === current && (
-                  <div className='download-btn' key={`download-btn ${index}`}>
-                    <a href="./numeros/asset1.pdf" download={`Neptune Magazine: ${slide.titre}`}><span><img src={Download} alt="download button"></img></span></a>
+                  <div className='download' key={`download-btn ${index}`}>
+                    <a href="./numeros/asset1.pdf" download={`Neptune Magazine: ${slide.title}`}><p>Telecharger ce numéro</p><img src={Download} alt="download button"></img></a>
                   </div>
                 )}
               </>            
             )
 
           })}
-        </div>
+          <div className="ou">
+          <p>ou</p>        
+          </div>
+  
+          <div className="home-link">
+            <Link className='link' to="/numeros"><h6>Voir tous les numéros</h6></Link>
+          </div>
+
       </section>
 
     </div>

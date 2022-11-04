@@ -1,10 +1,6 @@
 .slider-container
     width: 100%
     height: 100%
-    .slider-title
-        text-align: center
-        font-size: 2rem
-        margin-top: 2rem
 
     .slider
         width: 100%
@@ -13,7 +9,7 @@
         justify-content: center
         align-items: center
         position: relative
-        padding: 2rem 2rem 4rem 2rem
+        padding: 0 2rem 4rem 2rem
 
         .slide
             opacity: 0
@@ -22,11 +18,11 @@
             -webkit-box-shadow: 4px 14px 20px 3px rgba(0,0,0,0.49)
             box-shadow: 4px 14px 20px 3px rgba(0,0,0,0.49)
             .image
-                min-width: 26rem
+                min-width: 24rem
                 min-height: 41.7rem
         .slide.active
             opacity: 1
-            transition-duration: 0.8s
+            transition-duration: 0.4s
 
         .prevArrow
             position: absolute
@@ -51,41 +47,38 @@
         padding: 2rem
         width: 100%
         h2
-            font-size: 2rem
+            font-size: 1.8rem
 
         .slide-desc
             p
-                min-height: 12rem
-                font-size: 1.8rem
+                min-height: 10rem
+                font-size: 1.6rem
         .download
             display: flex
-            align-items: center
-            h2
-                font-size: 2rem
-            .download-btn
-                margin-left: 2rem
-                text-align: center
-                a
-                    img
-                        width: 6rem
+            justify-content: center
+            a
+                display: flex
+                justify-content: center
+                align-items: center
+                gap: 2rem
+                background-color: #198754
+                border-radius: 0.5rem
+                padding: 1rem
+                p
+                    color: white
+                    font-size: 2rem
+                    font-weight: 300
+                img
+                    width: 4rem
 
 @include respond(desktop)
     .slider-container
         height: 100%
-        padding: 10rem 0 2rem 0
         display: flex
         flex-direction: row
         justify-content: center
         align-items: flex-start
         position: relative
-
-        .slider-title
-            position: absolute
-            top: 0
-            left: 0
-            text-align: start
-            font-size: 3rem
-            margin: 4rem 0 0 3rem
 
         .slider
             width: 50%
@@ -132,19 +125,16 @@
             width: 50%
             padding: 2rem
             h2
-                font-size: 2.4rem
+                font-size: 3rem
 
             .slide-desc
                 p
-                    min
-                    font-size: 2rem
+                    font-size: 2.4rem
 
             .download
-                display: flex
-                align-items: center
-                h2
-                    font-size: 2.4rem
-                .download-btn
-                    padding: 0
-                    margin-left: 3rem
-                    text-align: start
+                a
+                    p
+                        font-size: 2.5rem
+
+                    img
+                        width: 5rem

@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect, Suspense} from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -6,8 +6,6 @@ import {
   Outlet,
 } from "react-router-dom";
 
-
-import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Write from "./pages/Write";
 import Article from "./pages/Article";
@@ -18,6 +16,8 @@ import NavbarMobile from "./components/NavbarMobile";
 import NavbarDesktop from "./components/NavbarDesktop";
 import FooterMobile from "./components/FooterMobile";
 import FooterDesktop from "./components/FooterDesktop";
+
+const Home = React.lazy(() => import('./pages/Home'));
 
 const Layout = () => {
 
@@ -37,7 +37,9 @@ const Layout = () => {
   return  (
     <>
       {screenWidth < 800 ? <NavbarMobile/> : <NavbarDesktop/>}
-      <Outlet/>
+      <Suspense>
+        <Outlet/>
+      </Suspense>
       {screenWidth < 800 ? <FooterMobile/> : <FooterDesktop/>}
     </>
   )

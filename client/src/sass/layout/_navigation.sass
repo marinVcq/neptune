@@ -27,6 +27,18 @@
     .menu.showMenu
         height: 35rem
 
+.bg-layer
+    position: absolute
+    top: 0
+    left: 0
+    width: 100vw
+    height: 0
+    z-index: 2
+    background-color: rgba(33,33,33,0.9)
+    position: fixed
+    transition: all 0.2s ease-in-out
+.bg-layer.active
+    height: 100vh
 .desktop-navbar
     z-index: 2
     position: fixed

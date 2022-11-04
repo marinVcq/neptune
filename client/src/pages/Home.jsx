@@ -1,5 +1,6 @@
 import React, {useState, useEffect, Suspense} from "react";
 import { Link } from 'react-router-dom';
+import { HashLink, NavHashLink } from 'react-router-hash-link';
 
 import HeaderDesktop from '../assets/images/header_desktop.jpg';
 import HeaderMobile from '../assets/images/header_mobile.jpg';
@@ -7,6 +8,7 @@ import Downward from '../assets/icons/downward.png';
 import StatueImage from "../assets/images/neptune_statue.png";
 import DoubleDown from "../assets/icons/double_down_100.png";
 import DoubleDownSmall from "../assets/icons/double_down.png";
+import NeptuneGif from "../assets/images/neptune.gif";
 
 import asset1 from '../assets/images/asset1.jpg'
 import asset2 from '../assets/images/asset2.png'
@@ -16,25 +18,51 @@ import asset3 from '../assets/images/asset3.jpg'
 const Slider = React.lazy(() => import("../components/Slider.jsx"));
 
 const Home = () => {
-  const SliderData = [
+  const Numeros = [
     {
-      image: 'https://i.ibb.co/hfP9HFd/asset1.jpg',
-      titre: 'Numéro 1',
-      description:
+      img: 'https://i.ibb.co/hfP9HFd/asset1.jpg',
+      title: 'Numéro 1',
+      desc:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam nam earum ratione cupiditate corrupti quo placeat recusandae odio, expedita, obcaecati corporis beatae! Repellat, exercitationem magnam!'
     },
     {
-      image:'https://i.ibb.co/dDPXWh2/asset2.png',
-        titre: 'Numéro 2',
-      description:
+      img:'https://i.ibb.co/dDPXWh2/asset2.png',
+        title: 'Numéro 2',
+      desc:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum voluptatibus commodi voluptas animi inventore, voluptates debitis ipsum qui blanditiis. Recusandae, dolore.'
     },
     {
-      image:'https://i.ibb.co/4ZwB5Cj/asset3.jpg',
-        titre: 'Numéro 3',
-      description:
+      img:'https://i.ibb.co/4ZwB5Cj/asset3.jpg',
+        title: 'Numéro 3',
+      desc:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed id aut laborum quo esse ratione rem blanditiis culpa?'
     }
+  ];
+  const Articles = [
+    {
+      id: 1,
+      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+      img: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1120&q=80",
+    },
+    {
+      id: 2,
+      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+      img: "https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80",
+    },
+    {
+      id: 3,
+      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+      img: "https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    },
+    {
+      id: 4,
+      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+      img: "https://images.unsplash.com/photo-1421757350652-9f65a35effc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80",
+    },
   ];
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   
@@ -67,17 +95,41 @@ const Home = () => {
           </>
         )}
       </header>
+
+        <h2 className="home-section" id="last-num">Nos derniers numéros</h2>
+
         <Suspense fallback={<div>Loading...</div>}>
-            <Slider SliderDate={SliderData} />
+            <Slider SliderData={Numeros} />
         </Suspense>
 
-        <div className="showmore">
-          <img src={DoubleDownSmall} alt="double arrow"></img>
-          <Link className='link' to="/numeros"><h6 className="showMore">Voir tous les numéros</h6></Link>
-          <img src={DoubleDownSmall} alt="double arrow"></img>
+        {screenWidth < 800 && (
+        <div className="home-gif">
+          <h2>Neptune</h2>
+          <img src={NeptuneGif} alt="neptune gif"></img>
         </div>
 
-        <h2>Nos dernier articles</h2>
+        )}
+        
+
+        <h2 className="home-section">Nos derniers articles</h2>
+
+        <div className="last-articles">
+          {Articles.slice(-3).map((article, index) => (
+            <div className="home-article" key={index}>
+              <img src={article.img}></img>
+              <div className="band">
+                <h3>{article.title}</h3>
+                <Link to='/article/:id'><p>Lire plus...</p></Link>                
+              </div>
+            </div>
+            
+          ))}
+        </div>
+        <div className="home-link">
+         <Link className='link' to="/articles"><h6>Voir tous les articles</h6></Link>
+        </div>
+
+
 
         
     </div>
