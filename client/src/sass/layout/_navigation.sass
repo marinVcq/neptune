@@ -17,13 +17,16 @@
     .menu
         height: 0
         width: 100%
+        display: flex
+        flex-direction: column
         text-align: center
         transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s
+
         .mobile-nav-link
             text-transform: uppercase
             font-size: 1.8rem
             font-weight: 400
-            padding: 2rem 0 2rem 0
+            padding-top: 1rem
     .menu.showMenu
         height: 35rem
 
@@ -37,8 +40,10 @@
     background-color: rgba(33,33,33,0.9)
     position: fixed
     transition: all 0.2s ease-in-out
+
 .bg-layer.active
     height: 100vh
+
 .desktop-navbar
     z-index: 2
     position: fixed
@@ -59,14 +64,14 @@
         display: flex
         float: right
         align-items: center
-        gap: 3rem
         .desktop-nav-link
-            color: rgba(50,50,50,0.7)
+            color: rgba(33,33,33,0.7)
             font-weight: 400
             text-transform: uppercase
-            font-size: 1.8rem
+            font-size: 2rem
             cursor: pointer
             height: 100%
+            margin-right: 3rem
             &:hover
                 color: black
                 transition: all 0.5s
