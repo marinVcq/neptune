@@ -1,3 +1,4 @@
+// NAVBAR MOBILE
 .mobile-navbar
     z-index: 2
     background-color: rgba(252,252,252,1)
@@ -7,71 +8,70 @@
     box-shadow: 0px 6px 17px 6px rgba(0,0,0,0.72)
     .top-container
         margin: 1rem 2rem 0 2rem
-        display: flex
-        justify-content: space-between
-        align-items: center
+        @include flexbox(row, space-between, center)
         .logo
             font-family: "Coverse Allstars"
-            font-size: 2.6rem
+            font-size: 2.8rem
             font-weight: 300
     .menu
-        height: 0
-        width: 100%
-        display: flex
-        flex-direction: column
-        text-align: center
-        transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s
+        @include width-height(100%,0)
+        @include flexbox(column, flex-start, center)
+        visibility: hidden
+        opacity: 0
+        transition: all 0.3s linear, opacity 0.2s ease-in-out
+        gap: 4rem
 
-        .mobile-nav-link
+        .nav-link
             text-transform: uppercase
             font-size: 1.8rem
             font-weight: 400
-            padding-top: 1rem
+        .social-links
+            .social-link
+                @include width-height(6rem,6rem)
+
     .menu.showMenu
-        height: 35rem
+        height: 32rem
+        margin-top: 3rem
+        opacity: 1
+        visibility: visible
 
 .bg-layer
-    position: absolute
-    top: 0
-    left: 0
-    width: 100vw
-    height: 0
+    @include set-position(fixed, none, none, 0,0)
+    @include width-height(100vw,0)
     z-index: 2
-    background-color: rgba(33,33,33,0.9)
-    position: fixed
+    background-color: rgba(33,33,33,0.92)
     transition: all 0.2s ease-in-out
 
 .bg-layer.active
     height: 100vh
 
+// NAVBAR DESKTOP
 .desktop-navbar
+    @include flexbox(row, space-between,center)
+    @include width-height(100vw, 7rem)
     z-index: 2
     position: fixed
-    width: 100%
     padding: 0 2rem 0 2rem
     background-color: rgba(252,252,252,1)
-    height: 7rem
-    display: flex
-    justify-content: space-between
-    align-items: center
     box-shadow: 0px 6px 17px 6px rgba(0,0,0,0.72)
 
     .logo
         font-family: "Coverse Allstars"
-        font-size: 3.2rem
+        font-size: 3rem
+        cursor: pointer
     .links
-        height: 100%
-        display: flex
-        float: right
-        align-items: center
-        .desktop-nav-link
+        @include flexbox(row, center,center)
+        .nav-link
             color: rgba(33,33,33,0.7)
             font-weight: 400
             text-transform: uppercase
-            font-size: 2rem
+            font-size: 1.8rem
             cursor: pointer
-            height: 100%
             margin-right: 3rem
             &:hover
                 color: black
                 transition: all 0.5s
+        .social-links
+            .social-link
+                @include width-height(5rem,5rem)
+                cursor: pointer
