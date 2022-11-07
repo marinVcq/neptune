@@ -1,48 +1,48 @@
+.articles-page
+    margin-top: 7rem
+
 .articles-container
-    margin: 7rem 0 3rem 0
-    display: flex
-    flex-direction: column
+    @include flexbox(column, flex-start,center)
     gap: 2rem
 
-    .page-title
-        font-size: 2.4rem
-        margin: 2rem 0 0 0
-        margin-left: 2rem
+.page-title
+    font-size: 2.4rem
+    margin: 2rem 0 2rem 2rem
 
-    .article
-        display: flex
-        flex-direction: column
-        gap: 1rem
+.article
+    @include flexbox(column, flex-start,center)
+    gap: 1rem
 
-        .article-img-container
-            img
-                width: 100%
-                height: 32rem
-                min-height: 32rem
-                object-fit: cover
-        .article-content
-            display: flex
-            flex-direction: column
-            gap: 2rem
-            padding: 1rem
-            .article-title
-                font-size: 1.8rem
-            .article-desc
-                font-size: 1.6rem
+    .article-img-container
+        img
+            width: 100%
+            height: 30rem
+            min-height: 30rem
+            object-fit: cover
+    .article-content
+        @include flexbox(column,flex-start,flex-start)
+        gap: 2rem
+        padding: 1rem
+        .article-title
+            font-size: 1.8rem
+        .article-desc
+            font-size: 1.6rem
 
-            button
-                padding: 1.5rem
-                max-width: 12rem
-                background: none
-                outline: none
-                border: 0.1rem solid rgb(33,33,33)
-                border-radius: 0.5rem
-                font-size: 1.6rem
+        .button
+            padding: 1.4rem
+            max-width: 12rem
+            background: none
+            outline: none
+            border: 0.1rem solid rgb(33,33,33)
+            border-radius: 0.5rem
+            font-size: 1.6rem
 
 @include respond(desktop)
     .articles-container
-        gap: 5rem
+        gap: 10rem
         align-items: center
+        margin: 4rem 0 4rem 0
+
         .page-title
             align-self: flex-start
             font-size: 4rem
@@ -50,8 +50,8 @@
         .article
             margin: 0
             flex-direction: row
-            gap: 3rem
-            max-width: 120rem
+            gap: 5rem
+            max-width: 130rem
 
             &:nth-child(2n+1)
                 flex-direction: row-reverse
@@ -62,8 +62,8 @@
                 flex: 1
                 img
                     width: 100%
+                    height: 100%
                     object-fit: cover
-                    border-radius: 1rem
 
             .article-content
                 flex: 1
@@ -73,11 +73,12 @@
                 padding: 2rem
 
                 .article-title
-                    font-size: 4rem
+                    font-size: 2.8rem
                 .article-desc
-                    font-size: 2.6rem
+                    font-size: 2.2rem
+                    line-height: 3rem
 
-                button
+                .button
                     padding: 2rem
                     max-width: 16rem
                     background: none

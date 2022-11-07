@@ -29,23 +29,26 @@ export const Articles = () => {
     },
   ];
   return (
-    <div className='articles-container'>
-      <h1 className='page-title'>Les Articles</h1>
-      {Articles.map(article =>(
-        <div className='article' key={article.id}>
-          <div className='article-img-container'>
-            <img src={article.img}></img>
+    <div className='articles-page'>
+      <h1 className='page-title'>Tous les articles</h1>
+      <div className='articles-container'>
+        {Articles.map(article =>(
+          <div className='article' key={article.id}>
+            <div className='article-img-container'>
+              <img src={article.img}></img>
+            </div>
+            <div className='article-content'>
+              <Link className='link' to={`/article/${article.id}`}>
+                <h1 className='article-title'>{article.title}</h1>
+              </Link>
+              <p className='article-desc'>{article.desc}</p>
+              <Link className='button' to={`/article/${article.id}`}>Voir Plus</Link>
+            </div>
           </div>
-          <div className='article-content'>
-            <Link className='link' to={`/article/${article.id}`}>
-              <h1 className='article-title'>{article.title}</h1>
-            </Link>
-            <p className='article-desc'>{article.desc}</p>
-            <button>Read More</button>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>      
     </div>
+
   )
 }
 

@@ -85,13 +85,6 @@ const Slider = ({SliderData}) => {
             )
 
           })}
-          <div className="ou">
-          <p>ou</p>        
-          </div>
-  
-          <div className="home-link">
-            <Link className='link' to="/numeros"><h6>Voir tous les numéros</h6></Link>
-          </div>
 
       </section>
 

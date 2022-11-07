@@ -78,8 +78,8 @@ const Home = () => {
   }, [])
 
   return (
-    <div className='home'>
-      <header>
+    <div className='home-page'>
+      <header style={screenWidth > 800 ? {backgroundImage:"url(/assets/images/header_mobile.jpg"} : {backgroundImage:"url(/assets/images/header_desktop.jpg"} }>
         <h1 className='header-title'>Neptune magazine</h1>
         <h2 className="header-description">Magazine digital by Open'D</h2>
 
@@ -95,12 +95,24 @@ const Home = () => {
           </>
         )}
       </header>
-
-        <h2 className="home-section" id="last-num">Nos derniers numéros</h2>
-
-        <Suspense fallback={<div>Loading...</div>}>
+      
+      <section className="home-content">
+        <h2 className="home-section-title" id="last-num">Nos derniers numéros</h2>
+        
+        <div className="home-slider">
+          <Suspense fallback={<div>Loading...</div>}>
             <Slider SliderData={Numeros} />
-        </Suspense>
+          </Suspense>         
+        </div>
+
+        <div className="ou">
+          <p>ou</p>
+          <div className="home-link">
+            <Link className='link' to="/numeros"><h6>Voir tous les numéros</h6></Link>
+          </div>      
+        </div>
+
+
 
         {screenWidth < 800 && (
         <div className="home-gif">
@@ -111,23 +123,33 @@ const Home = () => {
         )}
         
 
-        <h2 className="home-section">Nos derniers articles</h2>
+        <h2 className="home-section-title">Nos derniers articles</h2>
 
-        <div className="last-articles">
-          {Articles.slice(-3).map((article, index) => (
-            <div className="home-article" key={index}>
-              <img src={article.img}></img>
-              <div className="band">
-                <h3>{article.title}</h3>
-                <Link to='/article/:id'><p>Lire plus...</p></Link>                
+        <div className='articles-container'>
+          {Articles.slice(-2).map(article =>(
+            <div className='article' key={article.id}>
+              <div className='article-img-container'>
+                <img src={article.img}></img>
+              </div>
+              <div className='article-content'>
+                <Link className='link' to={`/article/${article.id}`}>
+                  <h1 className='article-title'>{article.title}</h1>
+                </Link>
+                <p className='article-desc'>{article.desc}</p>
+                <Link className='button' to={`/article/${article.id}`}>Voir Plus</Link>
               </div>
             </div>
-            
           ))}
         </div>
-        <div className="home-link">
-         <Link className='link' to="/articles"><h6>Voir tous les articles</h6></Link>
-        </div>
+        
+        <div className="ou">
+          <p>ou</p>
+          <div className="home-link">
+            <Link className='link' to="/articles"><h6>Voir tous les articles</h6></Link>
+          </div>      
+        </div>     
+      </section>
+
 
 
 

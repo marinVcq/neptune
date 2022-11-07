@@ -20,6 +20,7 @@
             .image
                 min-width: 24rem
                 min-height: 41.7rem
+                border-radius: 1rem
         .slide.active
             opacity: 1
             transition-duration: 0.4s
@@ -44,14 +45,14 @@
             font-size: 2rem
 
     .description
-        padding: 2rem
+        padding: 2rem 2rem 0 2rem
         width: 100%
         h2
             font-size: 1.8rem
 
         .slide-desc
             p
-                min-height: 10rem
+                min-height: 12rem
                 font-size: 1.6rem
         .download
             display: flex
@@ -124,14 +125,19 @@
         .description
             width: 50%
             padding: 2rem
+            @include flexbox(column, flex-start, flex-start)
+            gap: 1rem
             h2
-                font-size: 3rem
+                font-size: 2.4rem
 
             .slide-desc
                 p
-                    font-size: 2.4rem
+                    min-height: 12.5rem
+                    font-size: 2rem
+                    line-height: 2.5rem
 
             .download
+                float: left
                 a
                     p
                         font-size: 2.5rem
