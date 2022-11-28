@@ -1,41 +1,63 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useState, useEffect} from 'react';
+import axios from 'axios'
+import { useLocation } from 'react-router-dom';
+import Arrow from '../assets/icons/forward.png'
 
 export const Articles = () => {
-  const Articles = [
-    {
-      id: 1,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1120&q=80",
-    },
-    {
-      id: 2,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80",
-    },
-    {
-      id: 3,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.unsplash.com/photo-1484600899469-230e8d1d59c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    },
-    {
-      id: 4,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.unsplash.com/photo-1421757350652-9f65a35effc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80",
-    },
-  ];
+
+  const [articles, setArticles] = useState([])
+  const [cat, setCat] = useState("Catégories")
+  const [catDropdown, setCatDropdown] = useState(false)
+
+  const handleDropdown = () =>{
+    setCatDropdown(prev => !prev)
+  }
+  const handleCat = (category) => {
+    setCat(category);
+    setCatDropdown(prev => !prev)
+    
+  }
+
+  const catLoc = useLocation().search
+
+  console.log(catLoc)
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try{
+        const res = await axios.get(`/articles${catLoc}`)
+        setArticles(res.data)
+      }catch(err){
+        console.log(err)
+
+      }
+    }
+    fetchData();
+
+  }, [catLoc])
+
   return (
     <div className='articles-page'>
-      <h1 className='page-title'>Tous les articles</h1>
+      <div className='catnav'>
+        <h2 onClick={handleDropdown}>{cat}<span><img src={Arrow} className={`cat-arrow ${catDropdown ? "up" : "down"}`} ></img></span></h2>
+        <div className={`cat-container ${catDropdown ? "display" : ""}`}>
+          <Link className='link' to="/articles" onClick={() => handleCat("Tous les articles")}><h3>Tous les Articles</h3></Link>
+          <Link className='link' to="/articles/?cat=art" onClick={() => handleCat("Art")}><h3>Art</h3></Link>
+          <Link className='link' to="/articles/?cat=culture" onClick={ () =>handleCat("Culture")}><h3>Culture</h3></Link>
+          <Link className='link' to="/articles/?cat=science" onClick={() => handleCat("Science")}><h3>Science</h3></Link>
+          <Link className='link' to="/articles/?cat=societe" onClick={() => handleCat("Société")}><h3>Société</h3></Link>
+          <Link className='link' to="/articles/?cat=technologie" onClick={() => handleCat("Technologie")}><h3>Technologie</h3></Link>
+          <Link className='link' to="/articles/?cat=cinema" onClick={() => handleCat("Cinema")}><h3>Cinema</h3></Link>
+        </div>
+
+      </div>
       <div className='articles-container'>
-        {Articles.map(article =>(
+        {articles.map(article =>(
           <div className='article' key={article.id}>
             <div className='article-img-container'>
-              <img src={article.img}></img>
+              <img src={`../upload/${article.img}`}></img>
             </div>
             <div className='article-content'>
               <Link className='link' to={`/article/${article.id}`}>

@@ -7,26 +7,6 @@ import Close from '../assets/icons/close.png'
 import Download from '../assets/icons/download.png'
 import { Link } from 'react-router-dom'
 
-// export const SliderData = [
-//   {
-//     image: 'https://i.ibb.co/hfP9HFd/asset1.jpg',
-//     titre: 'Numéro 1',
-//     description:
-//     'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam nam earum ratione cupiditate corrupti quo placeat recusandae odio, expedita, obcaecati corporis beatae! Repellat, exercitationem magnam!'
-//   },
-//   {
-//     image:'https://i.ibb.co/dDPXWh2/asset2.png',
-//       titre: 'Numéro 2',
-//     description:
-//     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolorum voluptatibus commodi voluptas animi inventore, voluptates debitis ipsum qui blanditiis. Recusandae, dolore.'
-//   },
-//   {
-//     image:'https://i.ibb.co/4ZwB5Cj/asset3.jpg',
-//       titre: 'Numéro 3',
-//     description:
-//     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed id aut laborum quo esse ratione rem blanditiis culpa?'
-//   }
-// ];
 const Slider = ({SliderData}) => {
 
     const[current, setCurrent] = useState(0);

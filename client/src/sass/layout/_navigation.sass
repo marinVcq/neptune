@@ -5,35 +5,34 @@
     position: fixed
     width: 100%
     min-height: 7rem
-    box-shadow: 0px 6px 17px 6px rgba(0,0,0,0.72)
+    box-shadow: 0px 6px 17px 6px rgba(0,0,0,0.55)
     .top-container
         margin: 1rem 2rem 0 2rem
         @include flexbox(row, space-between, center)
         .logo
             font-family: "Coverse Allstars"
-            font-size: 2.8rem
+            font-size: 2.4rem
             font-weight: 300
+        .menu-btn
+            transition: 0.2s ease-in-out
+        .menu-btn.rotate
+            transform: rotate(90deg)
     .menu
         @include width-height(100%,0)
-        @include flexbox(column, flex-start, center)
-        visibility: hidden
-        opacity: 0
-        transition: all 0.3s linear, opacity 0.2s ease-in-out
+        @include flexbox(column, center, center)
+        transition: all 0.2s linear
         gap: 4rem
+        overflow: hidden
 
         .nav-link
             text-transform: uppercase
             font-size: 1.8rem
             font-weight: 400
-        .social-links
-            .social-link
-                @include width-height(6rem,6rem)
+        .social-link
+            @include width-height(6rem,6rem)
 
     .menu.showMenu
-        height: 32rem
-        margin-top: 3rem
-        opacity: 1
-        visibility: visible
+        height: 28rem
 
 .bg-layer
     @include set-position(fixed, none, none, 0,0)

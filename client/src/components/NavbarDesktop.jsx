@@ -5,6 +5,7 @@ import Snapchat from '../assets/icons/snapchat.png';
 import {Link} from 'react-router-dom'
 
 const NavbarDesktop = () => {
+
   return (
     <nav className='desktop-navbar'>
       <Link className='link' to="/"><span className='logo'>neptune</span></Link>

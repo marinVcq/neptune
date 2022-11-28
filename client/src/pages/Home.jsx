@@ -14,6 +14,10 @@ import asset1 from '../assets/images/asset1.jpg'
 import asset2 from '../assets/images/asset2.png'
 import asset3 from '../assets/images/asset3.jpg'
 
+import BackgroundMobile from "../assets/images/header_mobile.jpg";
+import BackgroundDesktop from "../assets/images/header_desktop.jpg";
+
+
 
 const Slider = React.lazy(() => import("../components/Slider.jsx"));
 
@@ -79,7 +83,7 @@ const Home = () => {
 
   return (
     <div className='home-page'>
-      <header style={screenWidth > 800 ? {backgroundImage:"url(/assets/images/header_mobile.jpg"} : {backgroundImage:"url(/assets/images/header_desktop.jpg"} }>
+      <header style={screenWidth > 800 ? {backgroundImage:`url(${BackgroundMobile})`} : {backgroundImage:`url(${BackgroundDesktop})`} }>
         <h1 className='header-title'>Neptune magazine</h1>
         <h2 className="header-description">Magazine digital by Open'D</h2>
 
@@ -97,7 +101,8 @@ const Home = () => {
       </header>
       
       <section className="home-content">
-        <h2 className="home-section-title" id="last-num">Nos derniers numéros</h2>
+
+        <h2>Derniers numéros</h2>
         
         <div className="home-slider">
           <Suspense fallback={<div>Loading...</div>}>
@@ -123,7 +128,7 @@ const Home = () => {
         )}
         
 
-        <h2 className="home-section-title">Nos derniers articles</h2>
+        <h2>Derniers articles</h2>
 
         <div className='articles-container'>
           {Articles.slice(-2).map(article =>(

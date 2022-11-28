@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Login from "./pages/Login";
+import Register from "./pages/Register"
 import Write from "./pages/Write";
 import Article from "./pages/Article";
 import Articles from "./pages/Articles";
@@ -53,11 +54,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home/>,
-      },
-      {
-        path: "/login",
-        element: <Login/>,
-      },    
+      },  
       {
         path: "/article/:id",
         element: <Article/>,
@@ -73,13 +70,21 @@ const router = createBrowserRouter([
       {
         path: "/articles",
         element: <Articles/>,
-      },
-      {
+      }   
+    ]
+  },
+  {
+    path: "/login",
+    element: <Login/>,
+  },
+  {
+    path: "/register",
+    element: <Register/>,
+  },
+  {
         path: "/write",
         element: <Write/>,
-      },
-    ]
-  }
+  },
 ]);
 
 function App() {

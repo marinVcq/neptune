@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import Burger from '../assets/icons/burger.png';
 import Close from '../assets/icons/close.png';
 import Instagram from '../assets/icons/instagram.png';
-import Snapchat from '../assets/icons/snapchat.png';
 import {Link} from 'react-router-dom'
 
 const NavbarMobile = () => {
@@ -29,23 +28,14 @@ const NavbarMobile = () => {
       <nav className='mobile-navbar'>
         
         <div className='top-container'>
-          <Link className='link' to="/"><span className='logo'>neptune</span></Link>
-          <img src={!navbarExpand ? Burger: Close} alt="burger btn" className='menu-btn' onClick={handleToggle}></img>
+          <Link className='link' to="/"><span className='logo' onClick={navbarExpand ? handleToggle : null}>neptune</span></Link>
+          <img src={!navbarExpand ? Burger: Close} alt="burger btn" className={`menu-btn ${navbarExpand ? "rotate" : ""}`} onClick={handleToggle}></img>
         </div>
-        <div className={`menu ${navbarExpand ? " showMenu visible": ""}`}>
-            <Link className='link' to="/"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Homepage</h6></Link>
-            <Link className='link' to="/numeros"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Les numéros</h6></Link>
-            <Link className='link' to="/articles"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Les articles</h6></Link>
-            <Link className='link' to="/contact"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Nous contacter</h6></Link>
-            <div className='social-links'>
-              <Link className='link' to="https://www.instagram.com/">
-                <img className='social-link' src={Instagram}></img>
-              </Link>
-              <Link className='link' to="">
-                <img className='social-link' src={Snapchat}></img>
-              </Link>              
-            </div>
-
+        <div className={`menu ${navbarExpand ? " showMenu": ""}`}>
+            <Link className='link' to="/numeros"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Numéros</h6></Link>
+            <Link className='link' to="/articles"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Articles</h6></Link>
+            <Link className='link' to="/contact"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Contact</h6></Link>
+            <Link className='link' to=""><img className='social-link' src={Instagram}></img></Link>
         </div>
 
       </nav>    
