@@ -10,7 +10,8 @@ import moment from 'moment'
 const Write = () => {
 
   const state = useLocation().state
-  const [value, setValue] = useState(state ? state.desc : "");
+  const [desc, setDesc] = useState(state ? state.desc : "");
+  const [content, setContent] = useState(state ? state.content: "");
   const [title, setTitle] = useState(state ? state.title : "");
   const [img, setImg] = useState(null);
   const [cat, setCat] = useState(state ? state.cat : "");
@@ -33,14 +34,11 @@ const Write = () => {
 
     // edit in database if there is a state also create a new article 
     try{
-      state ? await axios.put(`/articles/${state.id}`, {title, desc:value, cat, img:img ? imgUrl : ""})
-      : await axios.post(`articles/`, {title, desc:value, cat, img:img? imgUrl : "", date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")} )
+      state ? await axios.put(`/articles/${state.id}`, {title, desc ,content, cat, img:null ? imgUrl : state.img})
+      : await axios.post(`articles/`, {title, desc, cat,content, img: imgUrl, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")} )
     }catch(err){
       console.log(err)
     }
-
-
-
   }
 
   return (
@@ -51,11 +49,20 @@ const Write = () => {
         <h2>Publier ou Modifier un article</h2>
         
         <div className='panel-container'>
+
           <div className="content">
             
+            <h2>Titre</h2>
             <input type="text" placeholder='Titre' value={title} onChange={(e) => {setTitle(e.target.value)}}></input>
+
+            <h2>Description</h2>
+            <div className='editor-container' style={{height: "30rem"}}>
+              <ReactQuill className='editor' theme="snow" value={desc} onChange={setDesc} />
+            </div>
+
+            <h2>Contenu</h2>
             <div className='editor-container'>
-              <ReactQuill className='editor' theme="snow" value={value} onChange={setValue} />
+              <ReactQuill className='editor' theme="snow" value={content} onChange={setContent} />
             </div>
           </div>
 
@@ -116,11 +123,6 @@ const Write = () => {
           </div>
 
         </div>
-
-
-
-
-
       </div>    
     </>
 

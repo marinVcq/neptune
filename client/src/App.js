@@ -9,6 +9,7 @@ import {
 import Login from "./pages/Login";
 import Register from "./pages/Register"
 import Write from "./pages/Write";
+import Add from "./pages/Add";
 import Article from "./pages/Article";
 import Articles from "./pages/Articles";
 import Numeros from "./pages/Numeros";
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
   {
         path: "/write",
         element: <Write/>,
+  },
+  {
+        path: "/add",
+        element: <Add/>,
   },
 ]);
 

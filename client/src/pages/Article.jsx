@@ -49,7 +49,7 @@ const Article = () => {
 
 
       <div className='content'>
-        <img src={article ? article.img : null } className='article-image'></img>
+        <img src={article ? `../upload/${article.img}` : null } className='article-image'></img>
         <div className='user'>
            
           {article.userImage && (<img src={article.userImage}></img>)}
@@ -61,7 +61,7 @@ const Article = () => {
 
           {currentUser !== null && currentUser.username === article.username &&
             (<div className='edit'>
-              <Link className='link' to='/write?edit=2' state={article}>
+              <Link className='link' to={`/write`} state={article}>
                 <img src={EditIcon} className="edit icon"></img>
               </Link>
                 <img src={DeleteIcon} className="delete icon" onClick={handleDelete}></img>
@@ -71,7 +71,7 @@ const Article = () => {
 
         <div className='single-article'>
           <h2 className='article-title'>{article.title}</h2>
-            {article.desc}
+            {article.content}
         </div>
       </div>
 

@@ -1,30 +1,30 @@
 .slider-container
     width: 100%
     height: 100%
+    display: flex
+    flex-direction: column
 
     .slider
         width: 100%
         height: 100%
         display: flex
-        justify-content: center
+        flex-direction: column
         align-items: center
         position: relative
-        padding: 0 2rem 4rem 2rem
+        gap: 1.5rem
 
-        .slide
-            opacity: 0
-            background-color: grey
+        .image
+            opacity: 0.5
             border-radius: 1rem
+            object-fit: cover
             -webkit-box-shadow: 4px 14px 20px 3px rgba(0,0,0,0.49)
             box-shadow: 4px 14px 20px 3px rgba(0,0,0,0.49)
-            .image
-                @include width-height(24rem,41.7rem)
-                min-width: 24rem
-                min-height: 41.7rem
-                border-radius: 1rem
-        .slide.active
+            border-radius: 0.8rem
+            background-color: black
+
+        .image.display
             opacity: 1
-            transition-duration: 0.4s
+            transition: all 0.4s ease
 
         .prevArrow
             position: absolute
@@ -33,115 +33,83 @@
             transform: translateY(-50%)
             img
                 transform: rotate(180deg)
+
         .forArrow
             position: absolute
             top: 50%
             right: 0
             transform: translateY(-50%)
-        .slide-title
-            position: absolute
-            bottom: 0
-            left: 50%
-            transform: translateX(-50%)
+
+        .title
             font-size: 2rem
 
-    .description
-        padding: 2rem 2rem 0 2rem
+    .slider-details
         width: 100%
+        height: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 2rem
+        padding: 0 1rem 0 1rem
+        margin-top: 2rem
         h2
-            font-size: 1.8rem
+            width: 100%
+            font-size: 2rem
+            text-align: start
 
-        .slide-desc
-            p
-                min-height: 12rem
-                font-size: 1.6rem
+        .description
+            font-size: 1.6rem
+            min-height: 13rem
+
         .download
             display: flex
             justify-content: center
-            a
-                display: flex
-                justify-content: center
-                align-items: center
-                gap: 2rem
-                background-color: #198754
-                border-radius: 0.5rem
-                padding: 1rem
-                p
-                    color: white
-                    font-size: 2rem
-                    font-weight: 300
-                img
-                    width: 4rem
+            display: flex
+            justify-content: center
+            align-items: center
+            gap: 2rem
+            background-color: #198754
+            border-radius: 0.5rem
+            padding: 1rem
+            p
+                color: white
+                font-size: 2rem
+                font-weight: 300
+            img
+                width: 4rem
 
 @include respond(desktop)
     .slider-container
-        height: 100%
-        display: flex
         flex-direction: row
-        justify-content: center
-        align-items: flex-start
-        position: relative
+        max-width: 120rem
+        padding: 2rem
+        border-radius: 1rem
 
         .slider
-            width: 50%
-            max-width: 50rem
-            height: unset
-            display: flex
-            justify-content: center
-            align-items: flex-start
-            position: relative
-            padding: 2rem 2rem 4rem 2rem
-
-            .slide
-                opacity: 0
-                background-color: grey
-                border-radius: 1rem
-                -webkit-box-shadow: 4px 14px 20px 3px rgba(0,0,0,0.49)
-                box-shadow: 4px 14px 20px 3px rgba(0,0,0,0.49)
-                .image
-                    width: 30rem
-            .slide.active
-                opacity: 1
-                transition-duration: 0.8s
-
+            flex: 1
+            gap: 2.5rem
             .prevArrow
-                position: absolute
-                top: 50%
-                left: 0
-                transform: translateY(-50%)
-                img
-                    transform: rotate(180deg)
-            .forArrow
-                position: absolute
-                top: 50%
-                right: 0
-                transform: translateY(-50%)
-            .slide-title
-                position: absolute
-                bottom: 0
-                left: 50%
-                transform: translateX(-50%)
-                font-size: 2rem
+                cursor: pointer
 
-        .description
-            width: 50%
-            padding: 2rem
-            @include flexbox(column, flex-start, flex-start)
-            gap: 1rem
-            h2
+            .forArrow
+                cursor: pointer
+
+            .title
                 font-size: 2.4rem
 
-            .slide-desc
-                p
-                    min-height: 12.5rem
-                    font-size: 2rem
-                    line-height: 2.5rem
+        .slider-details
+            flex: 2
+            h2
+                width: 100%
+                font-size: 2.4rem
+                text-align: start
+
+            .description
+                font-size: 2rem
+                min-height: 13rem
 
             .download
-                float: left
-                a
-                    p
-                        font-size: 2.5rem
-
-                    img
-                        width: 5rem
+                cursor: pointer
+                p
+                    cursor: pointer
+                    font-size: 2.4rem
