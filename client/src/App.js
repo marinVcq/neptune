@@ -18,6 +18,7 @@ import NavbarMobile from "./components/NavbarMobile";
 import NavbarDesktop from "./components/NavbarDesktop";
 import FooterMobile from "./components/FooterMobile";
 import FooterDesktop from "./components/FooterDesktop";
+import Charte from "./pages/Charte";
 
 const Home = React.lazy(() => import('./pages/Home'));
 
@@ -71,7 +72,11 @@ const router = createBrowserRouter([
       {
         path: "/articles",
         element: <Articles/>,
-      }   
+      },
+      {
+        path: "/charte",
+        element: <Charte/>,
+      } 
     ]
   },
   {

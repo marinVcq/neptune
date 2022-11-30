@@ -1,0 +1,56 @@
+.nums-page
+    margin-top: 7rem
+    max-width: 130rem
+    padding: 0 2rem 0 2rem
+
+    h1
+        margin: 2rem 0 2rem 0
+        font-size: 3rem
+    .nums-container
+        width: 100%
+        height: 100%
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        gap: 2rem
+
+        .num
+            flex: 1
+            display: flex
+            flex-direction: column
+            gap: 2rem
+            max-width: 40rem
+
+            .cover
+                object-fit: contain
+                -webkit-box-shadow: 4px 14px 20px 3px rgba(0,0,0,0.49)
+                box-shadow: 4px 14px 20px 3px rgba(0,0,0,0.49)
+                border-radius: 0.8rem
+                background-color: black
+
+            .title
+                font-size: 2rem
+                text-align: center
+            .desc
+                font-size: 1.8rem
+                min-height: 15rem
+
+            .dwnld
+                width: 10rem
+                align-self: center
+                transition: all 0.3s ease-in-out
+
+                img
+                    object-fit: contain
+
+                &:hover
+                    transform: scale(1.07)
+
+@include respond(desktop)
+    .nums-page
+        .nums-container
+            gap: 10rem
+            .num
+                .dwnld
+                    img
+                        cursor: pointer

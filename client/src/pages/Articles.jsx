@@ -22,8 +22,6 @@ export const Articles = () => {
 
   const catLoc = useLocation().search
 
-  console.log(catLoc)
-  
   useEffect(() => {
     const fetchData = async () => {
       try{

@@ -11,20 +11,23 @@ const FooterDesktop = () => {
 
   return (
     <footer className='footerDesktop'>
-      <p>Build with <a href='https://fr.reactjs.org/'>React.js</a> by Open'D</p>
-      <div className='user-area'>
-        <span>Vous êtes connecté en tant qu'{currentUser? currentUser.username : "invité"}</span>
 
-        <div className='user-option'>
-          {currentUser ? <span onClick={logout}><b>Me déconnecter</b></span> : <Link to='/login' className='link'>Login</Link>}
-          {currentUser ? <span><b><Link className='.link' to="/write">Publier un article</Link></b></span>  : ""}
-          {currentUser ? <span><b><Link className='.link' to="/add">Publier un numéro</Link></b></span>  : ""}         
-
-        </div>
-      
+      <div className='item'>
+        <p>Build with <a href='https://fr.reactjs.org/'>React.js</a> by Open'D</p>
+        <Link className='link' to="/charte"><p>Politique de données</p></Link>
+        <Link to="/contact" className='link'><p>Contact</p></Link>
       </div>
 
-      <img src={OpenD} alt="logo Open'D"></img>
+      <div className='item'>
+        {currentUser && (<p>Bienvenue {currentUser? currentUser.username : "invité"}</p>)}
+        {currentUser ? <Link className='link' to="/write"><p>Publier un article</p></Link>  : ""}
+        {currentUser ? <Link className='link' to="/add"><p>Publier un numéro</p></Link>  : ""}         
+        {currentUser ? <button onClick={logout}><b>Me déconnecter</b></button> : <Link to='/login' className='link'><p>Login</p></Link>}
+        <img src={OpenD} alt="logo Open'D"></img>
+
+      </div>
+
+
     </footer>
   )
 }
