@@ -2,6 +2,8 @@ import express from "express"
 import articlesRoute from "./routes/articles.js"
 import authRoute from "./routes/auth.js"
 import usersRoute from "./routes/users.js"
+import contactRoute from "./routes/contact.js"
+import numerosRoute from "./routes/numeros.js"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import multer from 'multer'
@@ -40,11 +42,9 @@ app.use(function(req, res, next) {
 app.use("/api/articles", articlesRoute)
 app.use("/api/users", usersRoute)
 app.use("/api/auth", authRoute)
+app.use("/api/numeros", numerosRoute)
+app.use("/api/contact", contactRoute)
 
-
-app.get("/test",(req, res)=>{
-    res.json('It works!')
-})
 app.listen(8800, ()=>{
     console.log("connected")
 })

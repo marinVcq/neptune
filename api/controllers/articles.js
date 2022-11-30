@@ -10,7 +10,7 @@ export const getArticles = (req, res)=>{
     })
 }
 export const getArticle = (req, res)=>{
-    const q = "SELECT a.id, `username`, `title`, `desc`, a.img, u.img AS userImage,`cat`, `date` FROM users u JOIN articles a ON u.id = a.uid WHERE a.id = ?";
+    const q = "SELECT a.id, `username`, `title`, `content`, a.img, u.img AS userImage,`cat`, `date` FROM users u JOIN articles a ON u.id = a.uid WHERE a.id = ?";
     db.query(q, [req.params.id], (err,data) => {
         if(err) return res.status(500).json(err);
         return res.status(200).json(data[0])
@@ -23,10 +23,11 @@ export const addArticle= (req, res)=>{
         if(!token) return res.status(403).json("Token is not valid");
 
         // also try to post
-        const q = "INSERT INTO articles(`title`, `desc`,`img`, `cat`,`date`, `uid`) VALUES (?) ";
+        const q = "INSERT INTO articles(`title`, `desc`,`content`,`img`, `cat`,`date`, `uid`) VALUES (?) ";
         const values = [
             req.body.title,
             req.body.desc,
+            req.body.content,
             req.body.img,
             req.body.cat,
             req.body.date,
