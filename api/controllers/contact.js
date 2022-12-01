@@ -4,15 +4,15 @@ import nodemailer from 'nodemailer';
 const contactEmail = nodemailer.createTransport({
     service: 'gmail',
     auth:{
-        user: "@gmail.com",
-        pass: "",
+        user: "marinos29200@gmail.com",
+        pass: "fzhqdwmbnxqjafpw",
     },
 })
 
 contactEmail.verify((err) => {
     if(err) return console.log(err)
 
-    return console.log("Ready to send email mister!")
+    //return console.log("Ready to send email mister!")
 })
 
 export const postMessage = (req, res) => {

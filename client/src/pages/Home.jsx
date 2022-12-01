@@ -65,6 +65,13 @@ const Home = () => {
 
   }, [])
 
+  // Convert html to text/html
+  const getText = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent;
+  }
+
+
   return (
     <div className='home-page'>
       <header style={screenWidth < 800 ? {backgroundImage:`url(${BackgroundMobile})`} : {backgroundImage:`url(${BackgroundDesktop})`} }>
@@ -87,7 +94,8 @@ const Home = () => {
 
         <h2>Derniers numéros</h2>
         
-        <Slider SliderData={numeros} />
+        <Slider SliderData={numeros} />          
+
 
         <div className="home-link">
           <Link className='link' to="/numeros"><h6>Voir tous les numéros</h6></Link>
@@ -113,7 +121,7 @@ const Home = () => {
                 <Link className='link' to={`/article/${article.id}`}>
                   <h1 className='article-title'>{article.title}</h1>
                 </Link>
-                <p className='article-desc'>{article.desc}</p>
+                <p className='article-desc'>{getText(article.desc)}</p>
                 <Link className='button' to={`/article/${article.id}`}>Voir Plus</Link>
               </div>
             </div>

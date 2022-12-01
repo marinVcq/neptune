@@ -19,6 +19,8 @@ import NavbarDesktop from "./components/NavbarDesktop";
 import FooterMobile from "./components/FooterMobile";
 import FooterDesktop from "./components/FooterDesktop";
 import Charte from "./pages/Charte";
+import ScrollToTop from './components/ScrollToTop';
+
 
 const Home = React.lazy(() => import('./pages/Home'));
 
@@ -41,6 +43,7 @@ const Layout = () => {
     <>
       {screenWidth < 800 ? <NavbarMobile/> : <NavbarDesktop/>}
       <Suspense>
+        <ScrollToTop/>
         <Outlet/>
       </Suspense>
       {screenWidth < 800 ? <FooterMobile/> : <FooterDesktop/>}

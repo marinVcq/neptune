@@ -24,7 +24,6 @@ const FooterDesktop = () => {
         {currentUser ? <Link className='link' to="/add"><p>Publier un numéro</p></Link>  : ""}         
         {currentUser ? <button onClick={logout}><b>Me déconnecter</b></button> : <Link to='/login' className='link'><p>Login</p></Link>}
         <img src={OpenD} alt="logo Open'D"></img>
-
       </div>
 
 

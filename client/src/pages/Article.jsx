@@ -13,16 +13,29 @@ import Menu from '../components/Menu';
 
 const Article = () => {
 
+  // Useful State
   const [article, setArticle] = useState({})
   const location = useLocation()
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  // Useful variables
   const {currentUser }= useContext(AuthContext)
   const navigate = useNavigate()
-
-
 
   // Get the article ID
   const articleId = location.pathname.split("/")[2]
 
+  // Check the viewport
+  useEffect(() => {
+
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', changeWidth)
+
+  }, [])
+
+  // Fetch articles from database
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,6 +48,7 @@ const Article = () => {
     fetchData();
   }, [articleId]);
 
+  // Delete article 
   const handleDelete = async () => {
     try {
       await axios.delete(`/articles/${articleId}`);
@@ -44,24 +58,30 @@ const Article = () => {
     }
   }
 
+  // Convert html to text/html
+  const getText = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent;
+  }
+
   return (
     <div className='single-article-container'>
 
 
       <div className='content'>
-        <img src={article ? `../upload/${article.img}` : null } className='article-image'></img>
+        <img src={`../upload/${article.img}`} className='article-image'></img>
         <div className='user'>
            
           {article.userImage && (<img src={article.userImage}></img>)}
           
           <div className='info'>
             {article && (<span>{article.username}</span>)}
-            <p>Publié il y'a {moment(article.date).fromNow()}</p>
+            <p>{moment(article.date).fromNow()}</p>
           </div>
 
-          {currentUser !== null && currentUser.username === article.username &&
+          {currentUser !== null && currentUser.username === article.username && screenWidth > 800 &&
             (<div className='edit'>
-              <Link className='link' to={`/write`} state={article}>
+              <Link className='link' to={`/write?edit=2`} state={article}>
                 <img src={EditIcon} className="edit icon"></img>
               </Link>
                 <img src={DeleteIcon} className="delete icon" onClick={handleDelete}></img>
@@ -71,12 +91,12 @@ const Article = () => {
 
         <div className='single-article'>
           <h2 className='article-title'>{article.title}</h2>
-            {article.content}
+          {getText(article.content)}
         </div>
       </div>
 
 
-      <div className='menu'>
+      <div className='menu-by-cat'>
         <Menu cat={article.cat}/>        
       </div>
 

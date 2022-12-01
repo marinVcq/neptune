@@ -35,7 +35,7 @@ const NavbarMobile = () => {
             <Link className='link' to="/numeros"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Numéros</h6></Link>
             <Link className='link' to="/articles"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Articles</h6></Link>
             <Link className='link' to="/contact"><h6 className='nav-link' onClick={navbarExpand ? handleToggle : null}>Contact</h6></Link>
-            <a href='https://www.instagram.com/' target="_blank"><img className='social-link' src={Instagram}></img></a>
+            <a href='https://www.instagram.com/neptune_magazine/?hl=fr' target="_blank"><img className='social-link' src={Instagram}></img></a>
         </div>
 
       </nav>    

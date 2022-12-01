@@ -12,6 +12,7 @@
             justify-content: center
             gap: 2rem
             font-weight: 400
+            cursor: pointer
         .cat-arrow
             width: 3rem
             transition: all 0.2s ease
@@ -33,8 +34,10 @@
                     font-size: 2.2rem
                     font-weight: 300
                     text-align: center
+                    cursor: pointer
         .cat-container.display
             height: 30rem
+
 .articles-container
     @include flexbox(column, flex-start,center)
     gap: 2rem
@@ -55,6 +58,7 @@
             object-fit: cover
     .article-content
         @include flexbox(column,flex-start,flex-start)
+        width: 100%
         gap: 2rem
         padding: 1rem
         .article-title

@@ -36,6 +36,12 @@ export const Articles = () => {
 
   }, [catLoc])
 
+  // Convert html to text/html
+  const getText = (html) => {
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent;
+  }
+
   return (
     <div className='articles-page'>
       <div className='catnav'>
@@ -61,7 +67,7 @@ export const Articles = () => {
               <Link className='link' to={`/article/${article.id}`}>
                 <h1 className='article-title'>{article.title}</h1>
               </Link>
-              <p className='article-desc'>{article.desc}</p>
+              <p className='article-desc'>{getText(article.desc)}</p>
               <Link className='button' to={`/article/${article.id}`}>Voir Plus</Link>
             </div>
           </div>

@@ -1,10 +1,14 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import axios from "axios"
 
 const Menu = ({cat}) => {
+
+  // Useful State
   const [articles, setArticles] = useState([])
 
+  // Fectch articles by category
   useEffect(() => {
     const fetchData = async () => {
       try{
@@ -26,7 +30,7 @@ const Menu = ({cat}) => {
             <div className='article-menu' key={article.id}>
                 <img src={`../upload/${article.img}`} className="article-menu-img"></img>
                 <h2 className='article-menu-title'>{article.title}</h2>
-                <button className='menu-btn'>Voir Plus</button>
+                <Link className='menu-btn' to={`/article/${article.id}`}>Voir Plus</Link>
             </div>
         ))}
 

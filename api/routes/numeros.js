@@ -1,5 +1,6 @@
 import express from "express"
 import { getNumeros,addNumero, deleteNumero} from "../controllers/numeros.js"
+import { db } from "../db.js"
 
 
 const router = express.Router()

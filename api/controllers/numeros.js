@@ -11,6 +11,8 @@ export const getNumeros = (req,res) =>{
 }
 
 export const addNumero = (req, res) =>{
+
+    console.log('from controller')
     // TOKEN AUTHENTICATION
     const token = req.cookies.access_token;
     jwt.verify(token, "jwtkey", (err, userInfo) =>{

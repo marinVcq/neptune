@@ -10,7 +10,7 @@ export const getArticles = (req, res)=>{
     })
 }
 export const getArticle = (req, res)=>{
-    const q = "SELECT a.id, `username`, `title`, `content`, a.img, u.img AS userImage,`cat`, `date` FROM users u JOIN articles a ON u.id = a.uid WHERE a.id = ?";
+    const q = "SELECT a.id AS id, `username`, `title`,`desc`, `content`, a.img AS img, u.img AS userImage,`cat`, `date` FROM users u JOIN articles a ON u.id = a.uid WHERE a.id = ?";
     db.query(q, [req.params.id], (err,data) => {
         if(err) return res.status(500).json(err);
         return res.status(200).json(data[0])
@@ -68,15 +68,20 @@ export const updateArticle = (req, res)=>{
         // get the article ID 
         const articleId = req.params.id
 
-        const q = "UPDATE articles SET `title`=?, `desc`=?,`img`=?, `cat`=? WHERE id=? AND uid=? ";
+        const q = "UPDATE articles SET `title`=?, `desc`=?,`content`=?,`img`=?, `cat`=? WHERE id=? AND uid=? ";
         const values = [
             req.body.title,
             req.body.desc,
+            req.body.content,
+
             req.body.img,
-            req.body.cat
+            req.body.cat,
+
         ]
+        console.log('values are ' + values[3])
+        console.log('id is ' + articleId)
         db.query(q, [...values, articleId, userInfo.id], (err, data) => {
-            if(err) return res.status(500).json(err)
+            if(err) return res.status(500).json("probleme dans la requête!")
             return res.status(200).json("Article updated successfully!")
         })
     })

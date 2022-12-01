@@ -5,6 +5,7 @@ import NavbarDesktop from '../components/NavbarDesktop'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 import moment from 'moment'
+import { useNavigate } from 'react-router-dom'
 
 
 const Write = () => {
@@ -15,6 +16,8 @@ const Write = () => {
   const [title, setTitle] = useState(state ? state.title : "");
   const [img, setImg] = useState(null);
   const [cat, setCat] = useState(state ? state.cat : "");
+
+  const navigate = useNavigate();
 
   // Upload image on server 
   const upload = async () => {
@@ -30,12 +33,19 @@ const Write = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const imgUrl = await upload()
+
+    const imgUrl = await upload();
+
+    console.log('imgUrl: ' + imgUrl)
 
     // edit in database if there is a state also create a new article 
+
     try{
-      state ? await axios.put(`/articles/${state.id}`, {title, desc ,content, cat, img:null ? imgUrl : state.img})
-      : await axios.post(`articles/`, {title, desc, cat,content, img: imgUrl, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")} )
+      state ? await axios.put(`/articles/${state.id}`, {title, desc ,content, img: img ? imgUrl : state.img, cat})
+      : await axios.post(`articles/`, {title, desc, content, img: img ? imgUrl : "", date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"), cat} )
+
+      navigate('/articles')
+      
     }catch(err){
       console.log(err)
     }
@@ -76,7 +86,7 @@ const Write = () => {
               <label htmlFor='file'>Charger une image</label>
               <div className='publish-buttons'>
                 <button>Sauvegarder le brouillon</button>
-                <button onClick={handleSubmit}>Publier</button>
+                <button onClick={handleSubmit}>{state ? "Modifier" : "Publier"}</button>
               </div>
             </div>
 

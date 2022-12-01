@@ -83,10 +83,10 @@ const Contact = () => {
         </form>
 
         <div className='bottom'>
-          <p>Vous pouvez également nous contacter à l'adresse email suivante: contact-neptune@gmail.com</p>
+          <p>Vous pouvez également nous contacter à l'adresse email suivante: neptune.magazine2022@gmail.com</p>
           <h3>Traitement des données</h3>
           <p>L'association Open'Digital est responsable du traitement de vos données sur son site, nous nous engageons à ne pas vendre ou céder vos
-            informations personnelles. Nous traitons vos données afin de satisfaire au mieux à votre expérience sur notre site. 
+            informations personnelles. Nous traitons vos données afin de satisfaire au mieux votre expérience sur notre site. 
             Vous pouvez nous contacter pour demander une copie ou l'effacement de vos données. En cas de problème vous pouvez effectuer une réclamation auprès de la Commission 
             nationale de l'informatique et des libertés.
             Pour en savoir plus sur la gestion de vos données par Open'D et vos droits, consultez la <Link className='link' to={"/charte"}><span>politique de protection des données Neptune-magazine</span></Link>.

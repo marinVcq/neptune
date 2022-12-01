@@ -54,7 +54,7 @@ const Add = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // Check for empty input
+        //Check for empty input
         if(title.length > 0 && desc.length > 0 && cover && file){
             setError("")
         }else{
@@ -62,10 +62,15 @@ const Add = () => {
         }
         const coverUrl = await upload(cover)
         const fileUrl = await upload(file)
+        
+        console.log(title)
+        console.log(desc)
+
 
         try{
-            await axios.post(`numeros/`, {title, desc, img:coverUrl, data:fileUrl, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")} )
-            navigate('/add')
+            console.log("try")
+            const res = await axios.post(`numeros/`, {title, desc, img:coverUrl, data:fileUrl, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")} )
+            console.log(res.data)
         }catch(err){
             console.log(err)
             setError("Une erreur est survenue!")
